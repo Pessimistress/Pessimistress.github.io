@@ -2,6 +2,36 @@
 
 <div>
   <div class="thumb">
+    <div data-title="Isochronic Map" >
+      <a href="http://pessimistress.github.io/isochronic-map/">
+        <img src="images/showcase-isochrone.jpg" />
+      </a>
+    </div>
+  </div>
+  <div class="thumb-desc">
+    <div>
+      <a href="http://pessimistress.github.io/isochronic-map/" target="_blank" rel="noopener noreferrer"><h2>Isochronic Map</h2></a>
+      <p class="credit"><a href="https://github.com/Pessimistress/isochronic-map-gpu">Source code</a> | <a href="https://medium.com/vis-gl/vis-hackathon-2019-56096209dce2">Blog post</a> | <a href="http://www.xiaoji-chen.com/2019/isochronic-map-webgl">Other blog post</a></p>
+      <p>Remapping road network in major cities by travel times.</p>
+    </div>
+  </div>
+
+  <div class="thumb">
+    <div data-title="Simulating the 2016 Primary" >
+      <a href="http://mcvs.thesunstirade.com/">
+        <img src="images/showcase-election-maricopa.jpg" />
+      </a>
+    </div>
+  </div>
+  <div class="thumb-desc">
+    <div>
+      <a href="http://mcvs.thesunstirade.com/" target="_blank" rel="noopener noreferrer"><h2>Simulating the 2016 Primary</h2></a>
+      <p class="credit">By <a href="https://twitter.com/andrewpulcipher">Andrew Pulcipher</a></p>
+      <p>An interactive visualization of the 2016 Presidential primary election in Maricopa County that uses polling place operations research to simulate election day lines and voter walkoffs in real time.</p>
+    </div>
+  </div>
+
+  <div class="thumb">
     <div data-title="The Bad Bet" >
       <a href="https://features.propublica.org/the-bad-bet/how-illinois-bet-on-video-gambling-and-lost/" target="_blank" rel="noopener noreferrer">
         <img src="images/showcase-propublica.jpg" />
@@ -98,14 +128,14 @@
 
   <div class="thumb">
     <div class="bg-black" data-title="Kepler.gl" >
-      <a href="https://uber.github.io/kepler.gl/" target="_blank" rel="noopener noreferrer">
+      <a href="https://kepler.gl/" target="_blank" rel="noopener noreferrer">
         <img src="images/showcase-kepler-gl.jpg" />
       </a>
     </div>
   </div>
   <div class="thumb-desc">
     <div>
-      <a href="https://uber.github.io/kepler.gl/" target="_blank" rel="noopener noreferrer"><h2>Kepler.gl</h2></a>
+      <a href="https://kepler.gl/" target="_blank" rel="noopener noreferrer"><h2>Kepler.gl</h2></a>
       <p>Kepler.gl is a powerful web-based geospatial data analysis tool. Built on a high performance rendering engine and designed for large-scale data sets.</p>
       <p class="credit"><a href="https://github.com/uber/kepler.gl" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://kepler.gl/demo/sfcontour" target="_blank" rel="noopener noreferrer">Example Map</a></p>
     </div>
