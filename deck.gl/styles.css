@@ -78,3 +78,7 @@
   font-style: normal;
   font-display: swap;
 }
+
+body {
+  -webkit-text-size-adjust: 100%;
+}
