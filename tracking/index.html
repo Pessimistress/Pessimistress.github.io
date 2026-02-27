@@ -1,0 +1,203 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/deck.gl@^8.1.0-alpha/dist.min.js"></script>
+    <script src="https://unpkg.com/@loaders.gl/csv@^2.0.0/dist/dist.min.js"></script>
+    <script src="./data.js"></script>
+    <script src="./ui.js"></script>
+    <style>
+      body {margin: 0; padding: 0; width: 100vw; height: 100vh; font-family: Arial, Helvetica, sans-serif;}
+      * {box-sizing: border-box;}
+      #control-panel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 20px;
+        padding: 24px;
+        background: #fff;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        width: 320px;
+        line-height: 1.5;
+        font-size: 13px;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="control-panel"></div>
+    <script type="application/javascript">
+
+const {DeckGL, OrbitView, PointCloudLayer, PathLayer, PolygonLayer} = deck;
+
+const deckgl = new DeckGL({
+  views: new OrbitView({orbitAxis: 'Z', target: [0, 0, 400]}),
+  initialViewState: {
+    zoom: -3,
+    rotationOrbit: -30,
+    rotationX: 45
+  },
+  controller: {minRotationX: 0, maxRotationX: 90},
+  pickingRadius: 10,
+  onClick: ({object}) => console.log(object),
+  layers: [
+  ]
+});
+
+let positions;
+let tracks;
+const SMOOTH = 5;
+const TRIM = 3;
+const SINGLE_DATA = [0];
+const getBBSize = d => Math.sqrt(d.bbwidth ** 2 + d.bbheight ** 2);
+
+loaders.load('./empty2.csv', loaders.CSVLoader, {csv: {skipEmptyLines: true}})
+  .then(data => {
+    positions = data;
+    tracks = assemblePaths(data);
+
+    UI.addControls(document.getElementById('control-panel'), {
+      plotPositions: {name: 'Positions', type: 'checkbox', value: true},
+      plotTracks: {name: 'Tracks', type: 'checkbox', value: false},
+      plotTrackStartEnd: {name: 'Start/end positions', type: 'checkbox', value: false},
+      project3D: {name: 'Project to 3D', type: 'checkbox', value: false},
+      smooth: {name: 'Smooth bbox sizes', type: 'checkbox', value: true},
+      trim: {name: 'Trim start/end of tracks', type: 'checkbox', value: false},
+      subsample: {name: 'Subsample', type: 'checkbox', value: false,
+        children: {
+          from: {name: 'From track index', type: 'number', value: 0},
+          to: {name: 'To track index', type: 'number', value: 100}
+        }
+      }
+    }, redraw);
+  });
+
+function redraw(settings) {
+  let points = positions;
+  let paths = tracks;
+  if (settings.subsample) {
+    paths = paths.slice(settings['subsample.from'], settings['subsample.to']);
+    points = paths.flatMap(t => t.points);
+  }
+  const dataComparator = (d0, d1) => d0.length === d1.length;
+
+  const layers = [
+    settings.plotPositions && new PointCloudLayer({
+      id: 'positions',
+      data: points,
+      dataComparator,
+      getPosition: d => getPosition(d, settings),
+      getColor: d => trackIdToColor(d.trackid),
+      pointSize: 1,
+      material: false,
+      updateTriggers: {
+        getPosition: {project3D: settings.project3D, smooth: settings.smooth}
+      }
+    }),
+
+    settings.plotTracks && new PathLayer({
+      id: 'tracks',
+      data: paths,
+      dataComparator,
+      billboard: true,
+      getPath: d => {
+        let {points} = d;
+        if (settings.trim) {
+          points = points.slice(TRIM, points.length - TRIM);
+        }
+        return points.map(p => getPosition(p, settings))
+      },
+      getColor: d => d.times.map(timestampToColor),
+      pickable: true,
+      autoHighlight: true,
+      getWidth: 2,
+      updateTriggers: {
+        getPath: {project3D: settings.project3D, trim: settings.trim, smooth: settings.smooth}
+      }
+    }),
+
+    settings.plotTrackStartEnd && new PointCloudLayer({
+      id: 'path-start',
+      data: paths,
+      dataComparator,
+      getPosition: d => getPosition(d.points[0], settings),
+      getColor: [128, 0, 255],
+      pointSize: 2,
+      material: false,
+      updateTriggers: {
+        getPosition: {project3D: settings.project3D, smooth: settings.smooth}
+      }
+    }),
+
+    settings.plotTrackStartEnd && new PointCloudLayer({
+      id: 'path-end',
+      data: paths,
+      dataComparator,
+      getPosition: d => getPosition(d.points[d.length - 1], settings),
+      getColor: [255, 0, 128],
+      pointSize: 2,
+      material: false,
+      updateTriggers: {
+        getPosition: {project3D: settings.project3D, smooth: settings.smooth}
+      }
+    }),
+
+    new PointCloudLayer({
+      id: 'camera',
+      data: SINGLE_DATA,
+      getPosition: d => [0, 0, H],
+      getColor: [255, 0, 0],
+      pointSize: 5,
+      material: false
+    }),
+
+    new PolygonLayer({
+      id: 'floor',
+      data: SINGLE_DATA,
+      getPolygon: d => {
+        const halfW = CENTER_X * FLOOR_SIZE_PER_PIXEL;
+        const halfH = CENTER_Y * FLOOR_SIZE_PER_PIXEL;
+        return [[-halfW, -halfH], [-halfW, halfH], [halfW, halfH], [halfW, -halfH]];
+      },
+      stroked: true,
+      filled: false,
+      getLineColor: [255, 0, 0],
+      lineWidthMinPixels: 1,
+      material: false
+    }),
+  ];
+
+  deckgl.setProps({layers});
+}
+
+function assemblePaths(rows) {
+  const paths = {};
+  for (const row of rows) {
+    let path = paths[row.trackid];
+    if (!path) {
+      path = {points: [], length: 0, trackid: row.trackid};
+      paths[row.trackid] = path;
+    }
+    path.points.push(row);
+    path.length++;
+  }
+
+  for (const trackid in paths) {
+    const path = paths[trackid];
+    const startTime = path.points[0].tick;
+
+    if (SMOOTH) {
+      let sizes = path.points.map(getBBSize);
+      sizes = smooth(sizes, SMOOTH);
+      for (let i = 0; i < path.length; i++) {
+        path.points[i].size = sizes[i];
+      }
+    }
+
+    path.times = path.points.map(d => d.tick - startTime);
+  }
+
+  return Object.values(paths);
+}
+
+    </script>
+  </body>
+</html>
