@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">TextLayer | deck.gl</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://deck.gl/deck.gl/docs/api-reference/layers/text-layer"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="TextLayer | deck.gl"><meta data-rh="true" name="description" content="The TextLayer renders text labels at given coordinates."><meta data-rh="true" property="og:description" content="The TextLayer renders text labels at given coordinates."><link data-rh="true" rel="icon" href="/deck.gl/favicon.ico"><link data-rh="true" rel="canonical" href="https://deck.gl/deck.gl/docs/api-reference/layers/text-layer"><link data-rh="true" rel="alternate" href="https://deck.gl/deck.gl/docs/api-reference/layers/text-layer" hreflang="en"><link data-rh="true" rel="alternate" href="https://deck.gl/deck.gl/docs/api-reference/layers/text-layer" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://8EVYAVB4KT-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"TextLayer","item":"https://deck.gl/deck.gl/docs/api-reference/layers/text-layer"}]}</script><link rel="stylesheet" href="/deck.gl/assets/css/styles.1d1f4dde.css">
-<script src="/deck.gl/assets/js/runtime~main.4703826b.js" defer="defer"></script>
-<script src="/deck.gl/assets/js/main.0acedce1.js" defer="defer"></script>
+<script src="/deck.gl/assets/js/runtime~main.ec207c2f.js" defer="defer"></script>
+<script src="/deck.gl/assets/js/main.a869c59d.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -58,6 +58,7 @@
 <li class="">Default <code>false</code></li>
 </ul>
 <p>Whether to render background for the text blocks.</p>
+<p>If a valid content box is defined by <a href="#getcontentbox" class="">getContentBox</a>, the background will fill this box. Otherwise, background is generated around the natural bounding box of the text.</p>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="backgroundborderradius"><code>backgroundBorderRadius</code> (number | number[4], optional)<a href="#backgroundborderradius" class="hash-link" aria-label="Direct link to backgroundborderradius" title="Direct link to backgroundborderradius" translate="no">​</a></h4>
 <ul>
 <li class="">Default <code>0</code></li>
@@ -124,6 +125,41 @@
 </ul>
 <p>A unitless number that will be multiplied with the current text size to set the width limit of a string. If specified, when the text is longer than the width limit, it will be wrapped into multiple lines using the strategy of <code>wordBreak</code>.</p>
 <p>For example, <code>maxWidth: 10.0</code> used with <code>getSize: 12</code> is roughly the equivalent of <code>max-width: 120px</code> in CSS.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="contentcutoffpixels"><code>contentCutoffPixels</code> (number[2], optional)<a href="#contentcutoffpixels" class="hash-link" aria-label="Direct link to contentcutoffpixels" title="Direct link to contentcutoffpixels" translate="no">​</a></h4>
+<ul>
+<li class="">Default: <code>[0, 0]</code></li>
+</ul>
+<p>Minimum visible region of the content box, as <code>[width, height]</code> in screen pixels. If the visible width or height is smaller than the specified cutoff, the corresponding text is hidden completely.
+This prop can be used to set the minimum length of clipped texts to improve readability.</p>
+<p>Only effective with a valid content box returned by <a href="#getcontentbox" class="">getContentBox</a>.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="contentalignhorizontal"><code>contentAlignHorizontal</code> (string, optional)<a href="#contentalignhorizontal" class="hash-link" aria-label="Direct link to contentalignhorizontal" title="Direct link to contentalignhorizontal" translate="no">​</a></h4>
+<ul>
+<li class="">Default: <code>&#x27;none&#x27;</code></li>
+</ul>
+<p>Align the text horizontally to the visible region of the content box.
+This prop can be used to keep the text visible while zooming and panning, similar to the CSS <code>position: &#x27;sticky&#x27;</code> behavior.</p>
+<p>Only effective with a valid content box returned by <a href="#getcontentbox" class="">getContentBox</a>. Usually used with a matching <a href="#gettextanchor" class="">getTextAnchor</a> prop.</p>
+<p>Supported values:</p>
+<ul>
+<li class=""><code>&#x27;none&#x27;</code></li>
+<li class=""><code>&#x27;start&#x27;</code></li>
+<li class=""><code>&#x27;center&#x27;</code></li>
+<li class=""><code>&#x27;end&#x27;</code></li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="contentalignvertical"><code>contentAlignVertical</code> (string, optional)<a href="#contentalignvertical" class="hash-link" aria-label="Direct link to contentalignvertical" title="Direct link to contentalignvertical" translate="no">​</a></h4>
+<ul>
+<li class="">Default: <code>&#x27;none&#x27;</code></li>
+</ul>
+<p>Align the text vertically to the visible region of the content box.
+This prop can be used to keep the text visible while zooming and panning, similar to the CSS <code>position: &#x27;sticky&#x27;</code> behavior.</p>
+<p>Only effective with a valid content box returned by <a href="#getcontentbox" class="">getContentBox</a>. Usually used with a matching <a href="#getalignmentbaseline" class="">getAlignmentBaseline</a> prop.</p>
+<p>Supported values:</p>
+<ul>
+<li class=""><code>&#x27;none&#x27;</code></li>
+<li class=""><code>&#x27;start&#x27;</code></li>
+<li class=""><code>&#x27;center&#x27;</code></li>
+<li class=""><code>&#x27;end&#x27;</code></li>
+</ul>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="outlinewidth"><code>outlineWidth</code> (number, optional)<a href="#outlinewidth" class="hash-link" aria-label="Direct link to outlinewidth" title="Direct link to outlinewidth" translate="no">​</a></h4>
 <ul>
 <li class="">Default: <code>0</code></li>
@@ -198,6 +234,17 @@
 <ul>
 <li class="">If an array is provided, it is used as the offset for all objects.</li>
 <li class="">If a function is provided, it is called on each object to retrieve its offset.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="getcontentbox"><code>getContentBox</code> (<a class="" href="/deck.gl/docs/developer-guide/using-layers#accessors">Accessor&lt;number[4]&gt;</a>, optional)<a href="#getcontentbox" class="hash-link" aria-label="Direct link to getcontentbox" title="Direct link to getcontentbox" translate="no">​</a></h4>
+<ul>
+<li class="">Default: <code>[0, 0, -1, -1]</code></li>
+</ul>
+<p>Called to retrieve the context box that contains the text. Characters that overflow the area are not displayed. Returns <code>[x, y, width, height]</code>, where all values are world space (meter) offsets from the text anchor position.</p>
+<ul>
+<li class=""><code>x</code>, <code>y</code> define the rectangle&#x27;s origin relative to the text anchor.</li>
+<li class=""><code>width</code>, <code>height</code> define the rectangle size.</li>
+<li class="">A negative <code>width</code> disables clipping on the X axis.</li>
+<li class="">A negative <code>height</code> disables clipping on the Y axis.</li>
 </ul>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="getbackgroundcolor"><code>getBackgroundColor</code> (<a class="" href="/deck.gl/docs/developer-guide/using-layers#accessors">Accessor&lt;Color&gt;</a>, optional) <img decoding="async" loading="lazy" src="https://img.shields.io/badge/transition-enabled-green.svg?style=flat-square%22" alt="transition-enabled" class="img_ev3q"><a href="#getbackgroundcolor" class="hash-link" aria-label="Direct link to getbackgroundcolor" title="Direct link to getbackgroundcolor" translate="no">​</a></h4>
 <ul>

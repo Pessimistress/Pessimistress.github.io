@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">OrthographicView | deck.gl</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://deck.gl/deck.gl/docs/api-reference/core/orthographic-view"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="OrthographicView | deck.gl"><meta data-rh="true" name="description" content="The OrthographicView class is a subclass of View that creates a top-down view of the XY plane. It is usually used for rendering 2D charts in non-geospatial use cases."><meta data-rh="true" property="og:description" content="The OrthographicView class is a subclass of View that creates a top-down view of the XY plane. It is usually used for rendering 2D charts in non-geospatial use cases."><link data-rh="true" rel="icon" href="/deck.gl/favicon.ico"><link data-rh="true" rel="canonical" href="https://deck.gl/deck.gl/docs/api-reference/core/orthographic-view"><link data-rh="true" rel="alternate" href="https://deck.gl/deck.gl/docs/api-reference/core/orthographic-view" hreflang="en"><link data-rh="true" rel="alternate" href="https://deck.gl/deck.gl/docs/api-reference/core/orthographic-view" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://8EVYAVB4KT-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OrthographicView","item":"https://deck.gl/deck.gl/docs/api-reference/core/orthographic-view"}]}</script><link rel="stylesheet" href="/deck.gl/assets/css/styles.1d1f4dde.css">
-<script src="/deck.gl/assets/js/runtime~main.4703826b.js" defer="defer"></script>
-<script src="/deck.gl/assets/js/main.0acedce1.js" defer="defer"></script>
+<script src="/deck.gl/assets/js/runtime~main.ec207c2f.js" defer="defer"></script>
+<script src="/deck.gl/assets/js/main.a869c59d.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -30,9 +30,15 @@
 <p>To render, <code>OrthographicView</code> needs to be used together with a <code>viewState</code> with the following parameters:</p>
 <ul>
 <li class=""><code>target</code> (number[3], optional) - The world position at the center of the viewport. Default <code>[0, 0, 0]</code>.</li>
-<li class=""><code>zoom</code> (number | number[2], optional) - The zoom level of the viewport. <code>zoom: 0</code> maps one unit distance to one pixel on screen, and increasing <code>zoom</code> by <code>1</code> scales the same object to twice as large. For example <code>zoom: 1</code> is 2x the original size, <code>zoom: 2</code> is 4x, <code>zoom: 3</code> is 8x etc.. To apply independent zoom levels to the X and Y axes, supply an array <code>[zoomX, zoomY]</code>. Default <code>0</code>.</li>
+<li class=""><code>zoom</code> (number, optional) - The zoom level of the viewport. <code>zoom: 0</code> maps one unit distance to one pixel on screen, and increasing <code>zoom</code> by <code>1</code> scales the same object to twice as large. For example <code>zoom: 1</code> is 2x the original size, <code>zoom: 2</code> is 4x, <code>zoom: 3</code> is 8x etc.. To apply independent zoom levels to the X and Y axes, use <code>zoomX</code> and <code>zoomY</code>. Default <code>0</code>.</li>
+<li class=""><code>zoomX</code> (number, optional) - The zoom level along X axis. Overrides <code>zoom</code> if supplied.</li>
+<li class=""><code>zoomY</code> (number, optional) - The zoom level along Y axis. Overrides <code>zoom</code> if supplied.</li>
 <li class=""><code>minZoom</code> (number, optional) - The min zoom level of the viewport. Default <code>-Infinity</code>.</li>
 <li class=""><code>maxZoom</code> (number, optional) - The max zoom level of the viewport. Default <code>Infinity</code>.</li>
+<li class=""><code>minZoomX</code> (number, optional) - The min zoom level of the viewport on X axis. Default <code>minZoom</code>.</li>
+<li class=""><code>maxZoomX</code> (number, optional) - The max zoom level of the viewport on X axis. Default <code>maxZoom</code>.</li>
+<li class=""><code>minZoomY</code> (number, optional) - The min zoom level of the viewport on Y axis. Default <code>minZoom</code>.</li>
+<li class=""><code>maxZoomY</code> (number, optional) - The max zoom level of the viewport on Y axis. Default <code>maxZoom</code>.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="controller">Controller<a href="#controller" class="hash-link" aria-label="Direct link to Controller" title="Direct link to Controller" translate="no">​</a></h2>
 <p>By default, <code>OrthographicView</code> uses the <code>OrthographicController</code> to handle interactivity. To enable the controller, use:</p>
