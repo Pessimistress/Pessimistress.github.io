@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">Layer Class | deck.gl</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://deck.gl/deck.gl/docs/api-reference/core/layer"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Layer Class | deck.gl"><meta data-rh="true" name="description" content="The Layer class is the base class of all deck.gl layers, and it provides a number of base properties available in all layers."><meta data-rh="true" property="og:description" content="The Layer class is the base class of all deck.gl layers, and it provides a number of base properties available in all layers."><link data-rh="true" rel="icon" href="/deck.gl/favicon.ico"><link data-rh="true" rel="canonical" href="https://deck.gl/deck.gl/docs/api-reference/core/layer"><link data-rh="true" rel="alternate" href="https://deck.gl/deck.gl/docs/api-reference/core/layer" hreflang="en"><link data-rh="true" rel="alternate" href="https://deck.gl/deck.gl/docs/api-reference/core/layer" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://8EVYAVB4KT-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Layer Class","item":"https://deck.gl/deck.gl/docs/api-reference/core/layer"}]}</script><link rel="stylesheet" href="/deck.gl/assets/css/styles.1d1f4dde.css">
-<script src="/deck.gl/assets/js/runtime~main.ec207c2f.js" defer="defer"></script>
-<script src="/deck.gl/assets/js/main.a869c59d.js" defer="defer"></script>
+<title data-rh="true">Layer Class | deck.gl</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://deck.gl/deck.gl/docs/api-reference/core/layer"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Layer Class | deck.gl"><meta data-rh="true" name="description" content="The Layer class is the base class of all deck.gl layers, and it provides a number of base properties available in all layers."><meta data-rh="true" property="og:description" content="The Layer class is the base class of all deck.gl layers, and it provides a number of base properties available in all layers."><link data-rh="true" rel="icon" href="/deck.gl/favicon.ico"><link data-rh="true" rel="canonical" href="https://deck.gl/deck.gl/docs/api-reference/core/layer"><link data-rh="true" rel="alternate" href="https://deck.gl/deck.gl/docs/api-reference/core/layer" hreflang="en"><link data-rh="true" rel="alternate" href="https://deck.gl/deck.gl/docs/api-reference/core/layer" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://8EVYAVB4KT-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Layer Class","item":"https://deck.gl/deck.gl/docs/api-reference/core/layer"}]}</script><link rel="stylesheet" href="/deck.gl/assets/css/styles.8c137398.css">
+<script src="/deck.gl/assets/js/runtime~main.d8abc120.js" defer="defer"></script>
+<script src="/deck.gl/assets/js/main.07756996.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -181,16 +181,17 @@
 <p>Requires <code>pickable</code> to be true.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="coordinate-system-properties">Coordinate System Properties<a href="#coordinate-system-properties" class="hash-link" aria-label="Direct link to Coordinate System Properties" title="Direct link to Coordinate System Properties" translate="no">​</a></h3>
 <p>Normally only used when the application wants to work with coordinates that are not Web Mercator projected longitudes/latitudes.</p>
-<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="coordinatesystem"><code>coordinateSystem</code> (number, optional)<a href="#coordinatesystem" class="hash-link" aria-label="Direct link to coordinatesystem" title="Direct link to coordinatesystem" translate="no">​</a></h4>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="coordinatesystem"><code>coordinateSystem</code> (string, optional)<a href="#coordinatesystem" class="hash-link" aria-label="Direct link to coordinatesystem" title="Direct link to coordinatesystem" translate="no">​</a></h4>
 <ul>
-<li class="">Default: <code>COORDINATE_SYSTEM.DEFAULT</code></li>
+<li class="">Default: <code>&#x27;default&#x27;</code></li>
 </ul>
 <p>Specifies how layer positions and offsets should be geographically interpreted. One of:</p>
 <ul>
-<li class=""><code>COORDINATE_SYSTEM.CARTESIAN</code></li>
-<li class=""><code>COORDINATE_SYSTEM.LNGLAT</code></li>
-<li class=""><code>COORDINATE_SYSTEM.METER_OFFSETS</code></li>
-<li class=""><code>COORDINATE_SYSTEM.LNGLAT_OFFSETS</code></li>
+<li class=""><code>&#x27;default&#x27;</code></li>
+<li class=""><code>&#x27;cartesian&#x27;</code></li>
+<li class=""><code>&#x27;lnglat&#x27;</code></li>
+<li class=""><code>&#x27;meter-offsets&#x27;</code></li>
+<li class=""><code>&#x27;lnglat-offsets&#x27;</code></li>
 </ul>
 <p>The default is to interpret positions as latitude and longitude, however it is also possible to interpret positions as meter offsets added to projection center specified by the <code>coordinateOrigin</code> prop.</p>
 <p>See the article on <a class="" href="/deck.gl/docs/developer-guide/coordinate-systems">Coordinate Systems</a> for details.</p>
@@ -200,9 +201,9 @@
 </ul>
 <p>Specifies a reference point for coordinates that are expressed as offsets. Used when the <code>coordinateSystem</code> is set to one of the following modes:</p>
 <ul>
-<li class=""><code>COORDINATE_SYSTEM.CARTESIAN</code> (optional)</li>
-<li class=""><code>COORDINATE_SYSTEM.METER_OFFSETS</code> (required)</li>
-<li class=""><code>COORDINATE_SYSTEM.LNGLAT_OFFSETS</code> (required)</li>
+<li class=""><code>&#x27;cartesian&#x27;</code> (optional)</li>
+<li class=""><code>&#x27;meter-offsets&#x27;</code> (required)</li>
+<li class=""><code>&#x27;lnglat-offsets&#x27;</code> (required)</li>
 </ul>
 <p>See the article on <a class="" href="/deck.gl/docs/developer-guide/coordinate-systems">Coordinate Systems</a> for details.</p>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="wraplongitude"><code>wrapLongitude</code> (boolean, optional)<a href="#wraplongitude" class="hash-link" aria-label="Direct link to wraplongitude" title="Direct link to wraplongitude" translate="no">​</a></h4>
@@ -485,7 +486,7 @@ following fields:</p>
 <ul>
 <li class=""><code>x</code> (number) - Mouse position x relative to the viewport.</li>
 <li class=""><code>y</code> (number) - Mouse position y relative to the viewport.</li>
-<li class=""><code>coordinate</code> (number[2]) - Mouse position in world coordinates. Only applies if <a class="" href="/deck.gl/docs/api-reference/core/layer#coordinatesystem"><code>coordinateSystem</code></a> is <code>COORDINATE_SYSTEM.LNGLAT</code>.</li>
+<li class=""><code>coordinate</code> (number[2]) - Mouse position in world coordinates. Only applies if <a class="" href="/deck.gl/docs/api-reference/core/layer#coordinatesystem"><code>coordinateSystem</code></a> is <code>&#x27;lnglat&#x27;</code>.</li>
 <li class=""><code>color</code> (number[4]) - The color of the pixel that is being picked. It represents a &quot;picking color&quot; that is encoded by <a class="" href="/deck.gl/docs/api-reference/core/layer#encodepickingcolor"><code>layer.encodePickingColor()</code></a>.</li>
 <li class=""><code>index</code> (number) - The index of the object that is being picked. It is the returned value of <a class="" href="/deck.gl/docs/api-reference/core/layer#decodepickingcolor"><code>layer.decodePickingColor()</code></a>.</li>
 <li class=""><code>picked</code> (boolean) - <code>true</code> if <code>index</code> is not <code>-1</code>.</li>
@@ -537,9 +538,9 @@ following fields:</p>
 <li class=""><code>viewport</code> (Viewport) - defaults to <code>this.context.viewport</code>.</li>
 <li class=""><code>modelMatrix</code> (Matrix4) - defaults to <code>this.props.modelMatrix</code>.</li>
 <li class=""><code>coordinateOrigin</code> (number[3]) - defaults to <code>this.props.coordinateOrigin</code>.</li>
-<li class=""><code>coordinateSystem</code> (number) - defaults to <code>this.props.coordinateSystem</code>.</li>
+<li class=""><code>coordinateSystem</code> (string) - defaults to <code>this.props.coordinateSystem</code>.</li>
 <li class=""><code>fromCoordinateOrigin</code> (number[3]) - defaults to passed <code>coordinateOrigin</code>.</li>
-<li class=""><code>fromCoordinateSystem</code> (number) - defaults to passed <code>coordinateSystem</code>.</li>
+<li class=""><code>fromCoordinateSystem</code> (string) - defaults to passed <code>coordinateSystem</code>.</li>
 </ul>
 </li>
 </ul>
