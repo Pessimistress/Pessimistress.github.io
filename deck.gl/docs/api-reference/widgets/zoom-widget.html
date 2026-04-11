@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">ZoomWidget | deck.gl</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://deck.gl/deck.gl/docs/api-reference/widgets/zoom-widget"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="ZoomWidget | deck.gl"><meta data-rh="true" name="description" content="This widget controls the zoom level of a deck.gl view. Click &#x27;+&#x27; to zoom in by 1, click &#x27;-&#x27; to zoom out by 1. Supports controlling Map and Globe views."><meta data-rh="true" property="og:description" content="This widget controls the zoom level of a deck.gl view. Click &#x27;+&#x27; to zoom in by 1, click &#x27;-&#x27; to zoom out by 1. Supports controlling Map and Globe views."><link data-rh="true" rel="icon" href="/deck.gl/favicon.ico"><link data-rh="true" rel="canonical" href="https://deck.gl/deck.gl/docs/api-reference/widgets/zoom-widget"><link data-rh="true" rel="alternate" href="https://deck.gl/deck.gl/docs/api-reference/widgets/zoom-widget" hreflang="en"><link data-rh="true" rel="alternate" href="https://deck.gl/deck.gl/docs/api-reference/widgets/zoom-widget" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://8EVYAVB4KT-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ZoomWidget","item":"https://deck.gl/deck.gl/docs/api-reference/widgets/zoom-widget"}]}</script><link rel="stylesheet" href="/deck.gl/assets/css/styles.8c137398.css">
-<script src="/deck.gl/assets/js/runtime~main.d8abc120.js" defer="defer"></script>
-<script src="/deck.gl/assets/js/main.07756996.js" defer="defer"></script>
+<title data-rh="true">ZoomWidget | deck.gl</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://deck.gl/deck.gl/docs/api-reference/widgets/zoom-widget"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="ZoomWidget | deck.gl"><meta data-rh="true" name="description" content="This widget controls the zoom level of a deck.gl view. Click &#x27;+&#x27; to zoom in by 1, click &#x27;-&#x27; to zoom out by 1. Supports controlling Map and Globe views."><meta data-rh="true" property="og:description" content="This widget controls the zoom level of a deck.gl view. Click &#x27;+&#x27; to zoom in by 1, click &#x27;-&#x27; to zoom out by 1. Supports controlling Map and Globe views."><link data-rh="true" rel="icon" href="/deck.gl/favicon.png"><link data-rh="true" rel="canonical" href="https://deck.gl/deck.gl/docs/api-reference/widgets/zoom-widget"><link data-rh="true" rel="alternate" href="https://deck.gl/deck.gl/docs/api-reference/widgets/zoom-widget" hreflang="en"><link data-rh="true" rel="alternate" href="https://deck.gl/deck.gl/docs/api-reference/widgets/zoom-widget" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://8EVYAVB4KT-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ZoomWidget","item":"https://deck.gl/deck.gl/docs/api-reference/widgets/zoom-widget"}]}</script><link rel="stylesheet" href="/deck.gl/assets/css/styles.8c137398.css">
+<script src="/deck.gl/assets/js/runtime~main.aaa93ead.js" defer="defer"></script>
+<script src="/deck.gl/assets/js/main.5f3c6310.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -27,6 +27,12 @@
 <li class="">Default: <code>&#x27;vertical&#x27;</code></li>
 </ul>
 <p>Widget button orientation. Valid options are <code>vertical</code> or <code>horizontal</code>.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="zoomaxis"><code>zoomAxis</code> (string, optional)<a href="#zoomaxis" class="hash-link" aria-label="Direct link to zoomaxis" title="Direct link to zoomaxis" translate="no">​</a></h4>
+<ul>
+<li class="">Default: <code>&#x27;all&#x27;</code></li>
+</ul>
+<p>Which axes to apply zoom to. One of &#x27;X&#x27;, &#x27;Y&#x27; or &#x27;all&#x27;.
+Only effective if the current view is an <a class="" href="/deck.gl/docs/api-reference/core/orthographic-view">OrthographicView</a>.</p>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="zoominlabel"><code>zoomInLabel</code> (string, optional)<a href="#zoominlabel" class="hash-link" aria-label="Direct link to zoominlabel" title="Direct link to zoominlabel" translate="no">​</a></h4>
 <ul>
 <li class="">Default: <code>&#x27;Zoom In&#x27;</code></li>
@@ -52,6 +58,8 @@
 <li class=""><code>viewId</code>: The view being zoomed</li>
 <li class=""><code>delta</code>: Zoom direction (+1 for zoom in, -1 for zoom out)</li>
 <li class=""><code>zoom</code>: The new zoom level</li>
+<li class=""><code>zoomX</code>: The new zoom level on X axis, if used with an <code>OrthographicView</code>.</li>
+<li class=""><code>zoomY</code>: The new zoom level on Y axis, if used with an <code>OrthographicView</code>.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="styles">Styles<a href="#styles" class="hash-link" aria-label="Direct link to Styles" title="Direct link to Styles" translate="no">​</a></h2>
 <p>Learn more about how to replace icons in the <a class="" href="/deck.gl/docs/api-reference/widgets/styling#replacing-icons">styling guide</a>.</p>
