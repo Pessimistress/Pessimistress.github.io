@@ -8,10 +8,13 @@
   <style>
     body {margin: 0; font-family: sans-serif; overflow: hidden;}
     #app {width: 100vw; height: 100vh; display: flex; flex-direction: row; align-items: stretch;}
+    #app * {
+      box-sizing: border-box;
+    }
     #left-pane {
       flex: 0 0 auto;
-      width: 40vw;
-      max-width: 800px;
+      width: 40%;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       align-items: stretch;
@@ -143,15 +146,14 @@
       flex: 1 1 100%;
       display: flex;
       flex-direction: column;
-      border-left: solid 1px #444;
+      min-width: 0;
     }
     #right-pane .output-pane {
-      flex: 1 1 50%;
+      flex: 0 0 auto;
       min-height: 0;
     }
     #right-pane .html-pane {
       position: relative;
-      border-bottom: solid 1px #444;
       background: #fff;
     }
     #right-pane .html-pane iframe {
@@ -183,8 +185,25 @@
       color: #666;
       font-size: 13px;
     }
+    .gutter {
+      flex: 0 0 auto;
+      background: #ececec;
+      position: relative;
+    }
+    .gutter.gutter-horizontal {
+      cursor: col-resize;
+      width: 4px;
+      border-left: 1px solid #d7d7d7;
+      border-right: 1px solid #d7d7d7;
+    }
+    .gutter.gutter-vertical {
+      cursor: row-resize;
+      height: 4px;
+      border-top: 1px solid #d7d7d7;
+      border-bottom: 1px solid #d7d7d7;
+    }
   </style>
-  <script type="module" crossorigin src="./assets/index-DcJrnXE4.js"></script>
+  <script type="module" crossorigin src="./assets/index-BgVrzz_W.js"></script>
 </head>
 <body>
   <div id="app"></div>
